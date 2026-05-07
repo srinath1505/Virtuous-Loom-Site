@@ -1,0 +1,289 @@
+/* ═══════════════════════════════════════════════════════════
+   VL FEATURED WORK — pk portfolio Featured Projects port
+   B&W monochrome, abstract 3D shapes, pinned horizontal scroll
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Section wrapper (gets pinned by GSAP) ─────────────────────────────────── */
+.fw-section {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+/* ── Horizontal titles row ─────────────────────────────────────────────────── */
+.fw-titles {
+  position: relative;
+  width: 400vw;   /* 4 projects × 100vw each */
+  height: 100%;
+  display: flex;
+  will-change: transform;
+}
+
+.fw-title-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  gap: 1.5em;
+}
+
+/* Mobile thumbnail — hidden on desktop */
+.fw-title-img {
+  width: calc(100% - 4em);
+  max-width: 560px;
+  height: 150px;
+  border: 0.15em solid rgba(255, 255, 255, 0.35);
+  border-radius: 0.75em;
+  overflow: hidden;
+  display: none;
+}
+
+.fw-title-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Small mono label above title */
+.fw-title-meta {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Main project title */
+.fw-title {
+  font-family: 'rader', 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(3rem, 9vw, 12rem);
+  line-height: 0.9;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  max-width: 90%;
+  transform: translateY(-0.25em);
+}
+
+/* Mobile CTA — hidden on desktop */
+.fw-title-cta {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.55rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 100px;
+  transition: background 0.25s ease, color 0.25s ease;
+  display: none;
+}
+
+.fw-title-cta:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* ── 3D floating shapes backdrop ───────────────────────────────────────────── */
+.fw-images {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200vw;
+  height: 200vh;
+  transform-style: preserve-3d;
+  perspective: 500px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Each abstract shape card */
+.fw-shape-card {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fw-shape-card svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* ── Progress indicator pill (right side) ──────────────────────────────────── */
+.fw-indicator-pill {
+  position: absolute;
+  top: 50%;
+  right: 2em;
+  transform: translateY(-50%);
+  width: 1.75rem;
+  padding: 1rem 0.45rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.28rem;
+  z-index: 10;
+}
+
+.fw-indicator-label {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: 0.38rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #000;
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 0.1rem;
+  margin-top: 0.2rem;
+}
+
+.fw-indicator-label:first-child {
+  margin-top: 0;
+}
+
+.fw-indicator {
+  width: 100%;
+  height: 1.5px;
+  background: #000;
+  opacity: 0.2;
+  flex-shrink: 0;
+}
+
+/* ── Footer bar ────────────────────────────────────────────────────────────── */
+.fw-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1.75em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.fw-footer-label {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.fw-footer-cta {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 100px;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.fw-footer-cta:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE — mobile: vertical stack, no animation, no shapes
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1000px) {
+  .fw-section {
+    height: max-content;
+    padding: 3em 0 1em;
+    overflow: visible;
+  }
+
+  .fw-titles {
+    width: 100vw;
+    height: max-content;
+    flex-direction: column;
+    gap: 2.5em;
+  }
+
+  .fw-title-wrapper {
+    padding: 0 1.5em;
+    gap: 1em;
+    align-items: flex-start;
+  }
+
+  .fw-title-img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    border-radius: 0.6em;
+  }
+
+  .fw-title {
+    font-size: clamp(2.2rem, 9vw, 4.5rem);
+    text-align: left;
+    transform: none;
+    max-width: 100%;
+  }
+
+  .fw-title-meta {
+    font-size: 0.65rem;
+  }
+
+  .fw-title-cta {
+    display: inline-block;
+  }
+
+  .fw-images {
+    display: none;
+  }
+
+  .fw-indicator-pill {
+    display: none;
+  }
+
+  .fw-footer {
+    position: relative;
+    margin-top: 2.5em;
+    padding: 1.25em 1.5em;
+    justify-content: center;
+  }
+
+  .fw-footer-label {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .fw-title {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+  }
+
+  .fw-title-img {
+    height: 140px;
+  }
+
+  .fw-title-wrapper {
+    padding: 0 1.25em;
+  }
+}

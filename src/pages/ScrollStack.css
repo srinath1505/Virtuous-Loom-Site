@@ -1,0 +1,273 @@
+/* ═══════════════════════════════════════════════════════════
+   MARQUEE — GPU animated, pure CSS
+   ═══════════════════════════════════════════════════════════ */
+@keyframes marquee-scroll {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.marquee-selected-works {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.marquee-selected-works__track {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  animation: marquee-scroll 25s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.marquee-selected-works__segment {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.marquee-selected-works__text {
+  font-size: 13vw;
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+}
+
+.marquee-selected-works__dash {
+  font-size: 13vw;
+  font-weight: 300;
+  margin: 0 3vw;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1023px) {
+  .marquee-selected-works__track { animation-duration: 10s; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SCROLL STACK — layout scaffolding (do not edit)
+   ═══════════════════════════════════════════════════════════ */
+.scroll-stack-inner {
+  padding: 10vh 0 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   CARD — pk-inspired B&W editorial design
+   ═══════════════════════════════════════════════════════════ */
+.scroll-stack-card {
+  width: 92%;
+  max-width: 1200px;
+  height: auto;
+  max-height: 80vh;
+  margin-bottom: 2rem;
+  display: block;
+  position: relative;
+
+  /* Visual */
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* ── Header row ───────────────────────────────────── */
+.sw-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sw-card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.sw-card-num {
+  font-family: 'Inter', 'supply-mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+}
+
+.sw-card-rule {
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.sw-card-type {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+}
+
+.sw-card-cta {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.55rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 100px;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  white-space: nowrap;
+}
+
+.sw-card-cta:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+/* ── Body grid ────────────────────────────────────── */
+.sw-card-body {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 0;
+  height: min(360px, 44vh);
+}
+
+.sw-card-image-col {
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sw-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(15%);
+  transition: filter 0.4s ease, transform 0.6s ease;
+}
+
+.scroll-stack-card:hover .sw-card-img {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+
+.sw-card-info-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 2rem 2rem 2rem 2.25rem;
+}
+
+.sw-card-title {
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #fff;
+  margin: 0;
+}
+
+.sw-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.sw-card-tag {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0.25rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+}
+
+.sw-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  font-weight: 400;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .sw-card-body {
+    grid-template-columns: 1fr 1fr;
+  }
+  .sw-card-title {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .sw-card-header {
+    padding: 1rem 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .sw-card-body {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .sw-card-image-col {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    height: 200px;
+  }
+
+  .sw-card-info-col {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .sw-card-title {
+    font-size: 1.1rem;
+  }
+
+  .sw-card-desc {
+    font-size: 0.85rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .sw-card-header {
+    padding: 0.75rem 1rem;
+  }
+  .sw-card-info-col {
+    padding: 1rem;
+  }
+  .sw-card-image-col {
+    height: 160px;
+  }
+}

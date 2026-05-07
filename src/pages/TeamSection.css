@@ -1,0 +1,258 @@
+/* ═══════════════════════════════════════════════════════════
+   VL TEAM SECTION — pk-portfolio stacking card animation
+   B&W monochrome adaptation
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Section wrapper ───────────────────────────────────── */
+.vl-team-section {
+  width: 100%;
+  background: #0a0a0a; /* continues from the dark stats section */
+}
+
+/* ── Header (full-viewport intro) ──────────────────────── */
+.vl-team-header {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2em 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 5em;
+}
+
+.vl-team-eyebrow {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: clamp(0.9rem, 1.4vw, 1.25rem);
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0 2rem 0;
+}
+
+.vl-team-headline {
+  font-family: 'rader', 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 9vw, 11rem);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+}
+
+.vl-team-subtext {
+  margin-top: 2.5rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 48ch;
+}
+
+/* ── Cards container ────────────────────────────────────── */
+.vl-team-card {
+  position: sticky;
+  top: 4rem;
+}
+
+.vl-team-card-inner {
+  position: relative;
+  width: calc(100vw - 4em);
+  margin: 0 auto;
+  padding: 3em 3.5em;
+  display: flex;
+  gap: 5em;
+  border-radius: 1.75em;
+  /* Cap at 90vh so the full card is always visible when pinned at top 8% */
+  height: min(540px, 88vh);
+  align-items: center;
+}
+
+/* ── Left column: member info ───────────────────────────── */
+.vl-team-card-content {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75em;
+}
+
+.vl-team-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.vl-team-card-index {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.3;
+}
+
+.vl-team-card-rule {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 1px;
+  opacity: 0.2;
+  background: currentColor;
+}
+
+.vl-team-card-descriptor {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}
+
+.vl-team-card-name {
+  font-size: clamp(2.2rem, 4.5vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
+  margin: 0;
+}
+
+.vl-team-card-role {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  opacity: 0.5;
+  margin: 0;
+}
+
+.vl-team-card-bio {
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: 0.68;
+  max-width: 46ch;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ── Right column: photo ────────────────────────────────── */
+.vl-team-card-photo-col {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.vl-team-card-photo-frame {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 1.25em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  overflow: hidden;
+  position: relative;
+}
+
+/* when a real <img> is placed inside the frame */
+.vl-team-card-photo-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vl-team-card-initials {
+  font-family: 'rader', 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.vl-team-card-photo-hint {
+  font-family: 'supply-mono', 'Courier New', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.35;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE — mobile: stack cards vertically, no GSAP pin
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1000px) {
+  .vl-team-header {
+    padding: 5rem 1.5rem 3.5rem;
+    min-height: auto;
+  }
+
+  .vl-team-card {
+    position: relative;
+    top: auto;
+    margin-bottom: 1rem;
+  }
+
+  .vl-team-card-inner {
+    flex-direction: column-reverse; /* photo on top, info below */
+    width: calc(100vw - 2em);
+    padding: 2em;
+    gap: 2em;
+    height: auto;      /* override the fixed desktop height */
+    min-height: unset;
+    border-radius: 1.25em;
+  }
+
+  .vl-team-card-photo-col {
+    width: 100%;
+  }
+
+  .vl-team-card-photo-frame {
+    aspect-ratio: 16 / 9;
+    max-height: 220px;
+    width: 100%;
+  }
+
+  .vl-team-card-name {
+    font-size: clamp(1.6rem, 6vw, 2.5rem);
+  }
+
+  .vl-team-card-bio {
+    font-size: 0.9rem;
+  }
+
+  .vl-team-card-initials {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .vl-team-card-inner {
+    padding: 1.5em;
+    border-radius: 1em;
+  }
+
+  .vl-team-card-photo-frame {
+    max-height: 180px;
+  }
+
+  .vl-team-card-bio {
+    font-size: 0.85rem;
+    line-height: 1.65;
+  }
+}
