@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/Virtuous-Loom-Site/",
+  base: process.env.GITHUB_ACTIONS === "true" ? "/Virtuous-Loom-Site/" : "/",
   server: {
     host: "::",
     port: 8080,
